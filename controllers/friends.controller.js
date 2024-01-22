@@ -1,7 +1,4 @@
-let friends = [
-  { id: 0, name: "Albert Einstien" },
-  { id: 1, name: "Sir Isaac Newton" },
-];
+const model = require("../models/friends.model");
 
 function postFriend(req, res) {
   if (!req.body.name) {
@@ -9,19 +6,19 @@ function postFriend(req, res) {
       error: "Missing friend name",
     });
   }
-  const newFriend = { name: req.body.name, id: friends.length };
-  friends.push(newFriend);
+  const newFriend = { name: req.body.name, id: model.length };
+  model.push(newFriend);
 
   res.status(200).json(newFriend);
 }
 
 function getFriends(req, res) {
-  res.json(friends);
+  res.json(model);
 }
 
 function getFriend(req, res) {
   const friendId = Number(req.params.friendId);
-  const friend = friends[friendId];
+  const friend = model[friendId];
   if (friend) {
     res.status(200).json(friend);
   } else {
