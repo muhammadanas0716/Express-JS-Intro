@@ -11,7 +11,9 @@ app.use((req, res, next) => {
   const start = Date.now();
   next();
   const delta = Date.now() - start;
-  console.log(`Received ${req.method} request for ${req.url} in ${delta} ms`);
+  console.log(
+    `Received ${req.method} request for ${req.baseUrl}${req.url} in ${delta} ms`
+  );
 });
 
 app.use(express.json());
