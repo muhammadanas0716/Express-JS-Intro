@@ -1,6 +1,6 @@
 const express = require("express");
-const friendsController = require("./controllers/friends.controller");
-const messagesController = require("./controllers/messages.controller");
+const friendsRouter = require("./routes/friends.router");
+const messageRouter = require("./routes/messages.router");
 
 const app = express();
 const PORT = 3000;
@@ -15,14 +15,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// FRIENDS FUNCIONALITY
-app.get(["/", "/friends"], friendsController.getFriends);
-app.get("/friends/:friendId", friendsController.getFriend);
-app.post("/friends", friendsController.postFriend);
-
-// MESSAGES FUNCTIONALITY
-app.get("/messages", messagesController.getMessages);
-app.post("/messages", messagesController.postMessage);
+// EXPRESS ROUTING (MIDDLEWARE)
+app.use("/friends", friendsRouter);
+app.use("/messages", messageRouter);
 
 // START SERVER
 app.listen(PORT, () => {
