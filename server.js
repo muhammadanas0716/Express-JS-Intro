@@ -5,8 +5,6 @@ const messagesController = require("./controllers/messages.controller");
 const app = express();
 const PORT = 3000;
 
-// DATA
-
 // EXPRESS MIDDLEWARE
 app.use((req, res, next) => {
   const start = Date.now();
