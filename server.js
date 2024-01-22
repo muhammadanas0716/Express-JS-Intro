@@ -43,9 +43,6 @@ app.get(["/", "/friends"], (req, res) => {
 });
 
 // GET FRIEND'S MESSAGES
-app.get("/messages", (req, res) => {
-  res.send("<ul><li>A message by your friend Albert!</li></ul>");
-});
 
 // GET INFO ON SPECIFIC FRIEND
 app.get("/friends/:friendId", (req, res) => {
